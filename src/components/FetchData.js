@@ -40,8 +40,10 @@ const FetchData = () => {
     return (
         <div>
             <h1>The Lounge</h1>
-            <input ref={messageInputField} type="text" />
-            <button onClick={clickHandler}> Sänd </button>
+            <ChatInput
+                messageInputField={messageInputField}
+                clickHandler={clickHandler}
+            />
 
             {post.messages &&
                 Object.entries(post.messages)
