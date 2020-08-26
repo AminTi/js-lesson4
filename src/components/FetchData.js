@@ -14,7 +14,7 @@ const FetchData = () => {
 
     const sendData = () => {
         axios.get(dataApi).then((res) => {
-            setPosts(res.data)
+            setPosts(res.data.messages)
         })
     }
     useEffect(() => {
@@ -26,6 +26,10 @@ const FetchData = () => {
             message: messageInputField.current.value,
         }
         messageInputField.current.value = " "
+
+        // axios.post(messages).then((res) => {
+        //     console.log(res)
+        // })
 
         fetch(messages, {
             method: "POST",
@@ -45,8 +49,8 @@ const FetchData = () => {
                 clickHandler={clickHandler}
             />
 
-            {post.messages &&
-                Object.entries(post.messages)
+            {post &&
+                Object.entries(post)
                     .reverse()
                     .map((item, index) => {
                         return (
